@@ -36,5 +36,6 @@ Before a candidate can progress beyond evaluation, it needs:
 | --- | --- | --- |
 | [ProDes](ProDes/) | EVALUATION / NOT_RELEASE_READY | Test whether prompt-package design can become a reusable public ORDO module. |
 | [ORS](ORS/) | EVALUATION / NOT_RELEASE_READY | Construct a public-safe module from the internally active ORDO Response Standard. |
+| [Commands](Commands/) | EARLY_DESIGN / NOT_RELEASE_READY | Explore a canonical, governed command language and its complete response behavior. |
 
 Additional structure should be added only when demonstrated need justifies it.
