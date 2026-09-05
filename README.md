@@ -33,6 +33,8 @@ The immediate development focus is the **ORDO Public Design Language**: a visual
 
 See [`Design/`](Design/).
 
+A minimal public module staging area is available under [`Modules/`](Modules/). Its first candidate, [`ProDes`](Modules/ProDes/), is an evaluation surface and not an ORDO Public Release.
+
 ## Release model
 
 ```text
