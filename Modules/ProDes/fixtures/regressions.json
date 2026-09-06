@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "base_package": {
+    "artifact_type": "INIT",
+    "target_profile": "ordo-work",
+    "phase": "INITIALIZATION",
+    "persistent": true,
+    "identity_fields": {
+      "workspace_name": "Example Workspace",
+      "entity_canonical_name": null,
+      "stable_identifiers": [],
+      "functional_identity": null,
+      "interaction_identity": null,
+      "conversation_binding": null
+    },
+    "mutable_claims": [
+      {
+        "field": "runtime_profile",
+        "mode": "resolve_at_execution"
+      },
+      {
+        "field": "authority",
+        "mode": "resolve_at_execution"
+      }
+    ],
+    "resolve_first": [
+      "runtime_profile",
+      "authority"
+    ],
+    "fixed_results": {},
+    "capability_preflight": [
+      {
+        "capability": "target_contract_read",
+        "required_phase": "INITIALIZATION",
+        "blocking": true
+      }
+    ],
+    "artifact": {
+      "content": "current workspace.name = \"Example Workspace\"\n\nIdentity creation\n\nordo_init"
+    },
+    "analysis": {
+      "summary": "Prepare a persistent initialization artifact."
+    },
+    "provenance": [
+      {
+        "kind": "user_input",
+        "field": "workspace_name"
+      }
+    ],
+    "runtime_metadata": {}
+  },
+  "cases": [
+    {
+      "id": "REG-001",
+      "description": "Unverified identifier candidate",
+      "patch": {
+        "identity_fields": {
+          "stable_identifiers": [
+            {
+              "value": "ID-123",
+              "provenance_verified": false,
+              "creation_authorized": false
+            }
+          ]
+        }
+      },
+      "expected_errors": [
+        "PD-001"
+      ]
+    },
+    {
+      "id": "REG-002",
+      "description": "Incorrect persistent initialization order",
+      "patch": {
+        "artifact": {
+          "content": "ordo_init\n\ncurrent workspace.name = \"Example Workspace\"\n\nIdentity creation"
+        }
+      },
+      "expected_errors": [
+        "PD-002"
+      ]
+    },
+    {
+      "id": "REG-003",
+      "description": "Duplicate refresh command",
+      "patch": {
+        "artifact_type": "CONFIG",
+        "persistent": false,
+        "artifact": {
+          "content": "ordo_refresh\n\nApply configuration\n\nordo_refresh"
+        }
+      },
+      "expected_errors": [
+        "PD-003"
+      ]
+    },
+    {
+      "id": "REG-004",
+      "description": "Mutable state copied as a fixed current claim",
+      "patch": {
+        "mutable_claims": [
+          {
+            "field": "runtime_profile",
+            "mode": "fixed"
+          }
+        ]
+      },
+      "expected_errors": [
+        "PD-004"
+      ]
+    },
+    {
+      "id": "REG-005",
+      "description": "Identity dimensions collapsed into canonical_name",
+      "patch": {
+        "identity_fields": {
+          "canonical_name": "Example Workspace"
+        }
+      },
+      "expected_errors": [
+        "PD-005"
+      ]
+    },
+    {
+      "id": "REG-006",
+      "description": "Resolve-first field contradicted by fixed result",
+      "patch": {
+        "fixed_results": {
+          "runtime_profile": "assumed-current"
+        }
+      },
+      "expected_errors": [
+        "PD-006"
+      ]
+    },
+    {
+      "id": "REG-007",
+      "description": "Future release capability blocks initialization",
+      "patch": {
+        "capability_preflight": [
+          {
+            "capability": "release_publisher",
+            "required_phase": "RELEASE",
+            "blocking": true
+          }
+        ]
+      },
+      "expected_errors": [
+        "PD-007"
+      ]
+    },
+    {
+      "id": "REG-008",
+      "description": "Analysis mixed into the copyable artifact",
+      "patch": {
+        "artifact_type": "CONFIG",
+        "persistent": false,
+        "artifact": {
+          "content": "Apply the requested configuration.\n\n## Analysis\nThis text is not part of the prompt."
+        }
+      },
+      "expected_errors": [
+        "PD-008"
+      ]
+    }
+  ]
+}

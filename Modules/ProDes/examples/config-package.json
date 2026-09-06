@@ -1,0 +1,44 @@
+{
+  "artifact_type": "CONFIG",
+  "target_profile": "generic",
+  "phase": "CONFIGURATION",
+  "persistent": false,
+  "identity_fields": {
+    "workspace_name": "Example Workspace",
+    "entity_canonical_name": null,
+    "stable_identifiers": [],
+    "functional_identity": null,
+    "interaction_identity": null,
+    "conversation_binding": null
+  },
+  "mutable_claims": [
+    {
+      "field": "active_configuration",
+      "mode": "resolve_at_execution"
+    }
+  ],
+  "resolve_first": [
+    "active_configuration"
+  ],
+  "fixed_results": {},
+  "capability_preflight": [
+    {
+      "capability": "configuration_read",
+      "required_phase": "CONFIGURATION",
+      "blocking": true
+    }
+  ],
+  "artifact": {
+    "content": "Resolve the current target configuration from its authoritative source.\n\nApply only the requested, reversible configuration change.\n\nRead back the resulting state and report unresolved gaps."
+  },
+  "analysis": {
+    "summary": "A target-neutral configuration package."
+  },
+  "provenance": [
+    {
+      "kind": "user_input",
+      "field": "requested_change"
+    }
+  ],
+  "runtime_metadata": {}
+}
