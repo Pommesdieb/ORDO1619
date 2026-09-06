@@ -1,0 +1,49 @@
+{
+  "artifact_type": "INIT",
+  "target_profile": "ordo-work",
+  "phase": "INITIALIZATION",
+  "persistent": true,
+  "identity_fields": {
+    "workspace_name": "Example Workspace",
+    "entity_canonical_name": null,
+    "stable_identifiers": [],
+    "functional_identity": null,
+    "interaction_identity": null,
+    "conversation_binding": null
+  },
+  "mutable_claims": [
+    {
+      "field": "runtime_profile",
+      "mode": "resolve_at_execution"
+    },
+    {
+      "field": "authority",
+      "mode": "resolve_at_execution"
+    }
+  ],
+  "resolve_first": [
+    "runtime_profile",
+    "authority"
+  ],
+  "fixed_results": {},
+  "capability_preflight": [
+    {
+      "capability": "target_contract_read",
+      "required_phase": "INITIALIZATION",
+      "blocking": true
+    }
+  ],
+  "artifact": {
+    "content": "current workspace.name = \"Example Workspace\"\n\nIdentity creation\n\nordo_init"
+  },
+  "analysis": {
+    "summary": "Prepare a persistent initialization artifact."
+  },
+  "provenance": [
+    {
+      "kind": "user_input",
+      "field": "workspace_name"
+    }
+  ],
+  "runtime_metadata": {}
+}
