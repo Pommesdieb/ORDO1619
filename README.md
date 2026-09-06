@@ -33,11 +33,11 @@ The immediate development focus is the **ORDO Public Design Language**: a visual
 
 See [`Design/`](Design/).
 
-A minimal public module staging area is available under [`Modules/`](Modules/). Its first candidate, [`ProDes`](Modules/ProDes/), is an evaluation surface and not an ORDO Public Release.
+A minimal public module staging area is available under [`Modules/`](Modules/). Its first implemented candidate, [`ProDes`](Modules/ProDes/), is classified as an ORDO-WORK feature while remaining a public-staging, non-release surface.
 
 ## Release model
 
-```text
+~~~text
 Development
     ↓
 Public-safe staging
@@ -51,7 +51,7 @@ Public Boundary / Risk Review
 Human Gate
     ↓
 Public Release
-```
+~~~
 
 A state in this repository may be demonstrable, experimental, or release-candidate material without being an ORDO Public Release. Promotion to `ORDO1619/ORDO` is a separate governed transaction.
 
