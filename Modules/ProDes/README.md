@@ -1,49 +1,58 @@
 # ProDes
 
-**Status:** EVALUATION / PUBLIC_STAGING_CANDIDATE / NOT_RELEASE_READY  
-**Inclusion assessment:** FIT_WITH_CONDITIONS
+**Status:** STAGING_IMPLEMENTED / PUBLIC_STAGING_CANDIDATE / NOT_RELEASE_READY  
+**Product family:** ORDO-WORK feature  
+**Public Component identity:** NOT_ASSIGNED  
+**License:** NO_LICENSE_GRANTED
 
-## Candidate purpose
+## Purpose
 
-ProDes is being evaluated as a reusable module for designing reproducible prompt packages for governed workspaces and comparable target contexts.
+ProDes supports controlled generation and post-execution review of reproducible prompt artifacts. It keeps target-specific rules outside the generic core and makes unresolved state, authority boundaries, and validation results visible.
 
-A future public module could support:
+Initial artifact families are INIT, CONFIG, HANDOVER, and RECOVERY. Additional families require an explicit contract and regression evidence.
 
-- structured intent and requirement intake;
-- initialization and configuration prompt packages;
-- handover and recovery prompt packages;
-- target-aware validation checklists;
-- explicit unresolved-state and human-gate handling.
+## Operating loop
 
-## Required boundaries
+~~~text
+Resolve → Apply → Generate → Validate → Repair → Emit
+~~~
+
+In this module, Apply materializes resolved requirements into a generation plan. It does not execute the generated prompt and does not grant authority in the target context.
+
+## Module surfaces
+
+- [Core contract](core/contract.md) — portable data model, invariants, and lifecycle.
+- [ORDO-WORK target profile](profiles/ordo-work.md) — target-specific initialization and resolution constraints.
+- [Generator pipeline](pipelines/generator.md) — deterministic production path.
+- [Review pipeline](pipelines/review.md) — goal evaluation and generator-compliance review.
+- [Validation rules](validation/rules.md) — public rule catalog.
+- [Executable assurance](validation/prodes_lint.py) — dependency-free regression and disclosure checks.
+- [Regression fixtures](fixtures/regressions.json) — eight known failure classes.
+- [Examples](examples/) — public-safe prompt packages and a review report.
+
+## Boundaries
 
 ProDes must not:
 
 - execute authority belonging to a target context;
-- turn a generated artifact into an implicit change or approval;
-- invent unresolved runtime, identity, authority, or capability state;
-- require private registry records or confidential operational data;
-- present staging content as normative ORDO behavior or Public Release.
+- turn a generated artifact into an implicit change, approval, identity, or release;
+- invent unresolved runtime, identity, authority, capability, freshness, or verification state;
+- require private registries, carrier locators, conversation references, or confidential operational data;
+- embed mutable target rules in the generic core;
+- present a repository path, module name, or version as a Public Component identity;
+- present public staging as runtime adoption or Public Release.
 
-The target context remains responsible for resolving its own current authority and executing any generated artifact.
+The target context resolves its current authority and executes any generated artifact. The terminal output must keep the copyable prompt artifact separate from analysis, provenance, and runtime-response metadata.
 
-## Placement assessment
+## State separation
 
-The current evidence supports ProDes as an ORDO public-component candidate.
+| Dimension | State |
+| --- | --- |
+| Public module implementation | STAGING_IMPLEMENTED |
+| ORDO-WORK product classification | DECIDED |
+| ORDO-WORK runtime adoption | PENDING_TARGET_ADOPTION |
+| Public Component identity | NOT_ASSIGNED |
+| Release Candidate | NOT_DECLARED |
+| Public Release | NOT_RELEASED |
 
-This staging page does not decide that ProDes is an ORDO-WORK product module. A later ORDO-WORK adoption would require its own product-scope, authority, provenance, and release decision.
-
-Likewise, the name and directory do not allocate a Public Component identity. The repository path is only a locator.
-
-## Evidence needed for progression
-
-Progression beyond this evaluation page requires at least:
-
-1. a public-safe module specification;
-2. one realistic, non-confidential end-to-end example;
-3. validation criteria for reproducibility, authority fidelity, and target-context fit;
-4. a security and disclosure review of inputs and generated artifacts;
-5. a licensing decision;
-6. explicit Release Candidate and Public Release gates.
-
-Until these conditions are met, ProDes remains a staging candidate.
+The name `ProDes` is a product label at this stage. The directory is a locator. Neither allocates a public identifier.
