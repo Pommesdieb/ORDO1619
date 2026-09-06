@@ -13,7 +13,7 @@ Material in this directory:
 - is constructed from public-safe semantics;
 - does not become normative merely because it is public;
 - does not inherit authority from a development workspace or repository path;
-- does not establish ORDO-WORK product ownership;
+- may state a product-family assignment without claiming runtime adoption;
 - does not imply Release Candidate or Public Release status;
 - remains subject to disclosure, security, licensing, assurance, and human release gates.
 
@@ -32,8 +32,8 @@ Before a candidate can progress beyond evaluation, it needs:
 
 ## Current candidates
 
-| Candidate | State | Current purpose |
-| --- | --- | --- |
-| [ProDes](ProDes/) | EVALUATION / NOT_RELEASE_READY | Test whether prompt-package design can become a reusable public ORDO module. |
+| Candidate | Product family | State | Current purpose |
+| --- | --- | --- | --- |
+| [ProDes](ProDes/) | ORDO-WORK feature | STAGING_IMPLEMENTED / NOT_RELEASE_READY | Generate and review reproducible prompt artifacts without inventing target state or authority. |
 
 Additional structure should be added only when demonstrated need justifies it.
