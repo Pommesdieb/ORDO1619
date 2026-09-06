@@ -1,0 +1,21 @@
+name: ProDes module assurance
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prodes-assurance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run ProDes regression and disclosure checks
+        run: python3 Modules/ProDes/validation/prodes_lint.py --self-test
