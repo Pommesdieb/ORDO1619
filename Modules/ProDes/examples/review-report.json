@@ -1,0 +1,30 @@
+{
+  "review_version": "1.0",
+  "artifact_reference": "example-init-package",
+  "evidence_quality": "OBSERVED_OUTPUT",
+  "goal_evaluation": {
+    "result": "PASS",
+    "reason": "The target returned a usable initialization result."
+  },
+  "generator_compliance": {
+    "result": "PASS",
+    "rules_checked": [
+      "PD-001",
+      "PD-002",
+      "PD-003",
+      "PD-004",
+      "PD-005",
+      "PD-006",
+      "PD-007",
+      "PD-008"
+    ]
+  },
+  "observed_effects": [
+    {
+      "effect": "one prompt artifact emitted",
+      "verification": "observed"
+    }
+  ],
+  "findings": [],
+  "next_routes": []
+}
